@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /*
@@ -57,7 +58,10 @@ public class Student extends javax.swing.JFrame {
         gender = new javax.swing.JComboBox<>();
         grade = new javax.swing.JComboBox<>();
         search = new javax.swing.JButton();
-        submit = new javax.swing.JButton();
+        update = new javax.swing.JButton();
+        newStudent = new javax.swing.JButton();
+        submit1 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,11 +124,35 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
-        submit.setBackground(new java.awt.Color(204, 204, 255));
-        submit.setText("SUBMIT");
-        submit.addActionListener(new java.awt.event.ActionListener() {
+        update.setBackground(new java.awt.Color(204, 204, 255));
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
+                updateActionPerformed(evt);
+            }
+        });
+
+        newStudent.setBackground(new java.awt.Color(204, 204, 255));
+        newStudent.setText("New");
+        newStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newStudentActionPerformed(evt);
+            }
+        });
+
+        submit1.setBackground(new java.awt.Color(204, 204, 255));
+        submit1.setText("SUBMIT");
+        submit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submit1ActionPerformed(evt);
+            }
+        });
+
+        delete.setBackground(new java.awt.Color(204, 204, 255));
+        delete.setText("DELETE");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
             }
         });
 
@@ -168,10 +196,6 @@ public class Student extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(gurdianName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(103, 103, 103)
-                                .addComponent(contactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,15 +203,23 @@ public class Student extends javax.swing.JFrame {
                                 .addGap(135, 135, 135)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(address)
-                                    .addComponent(grade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(search)))
+                                    .addComponent(grade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(103, 103, 103)
+                                .addComponent(contactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(22, 22, 22)
+                        .addComponent(search))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(newStudent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submit1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(update)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delete)))
                 .addContainerGap(368, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(405, 405, 405)
-                    .addComponent(submit)
-                    .addContainerGap(448, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,12 +279,13 @@ public class Student extends javax.swing.JFrame {
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(contactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(456, Short.MAX_VALUE)
-                    .addComponent(submit)
-                    .addGap(15, 15, 15)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newStudent)
+                    .addComponent(update)
+                    .addComponent(submit1)
+                    .addComponent(delete))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,7 +323,10 @@ public class Student extends javax.swing.JFrame {
             
             String query = "SELECT * FROM student";
                     
-            rs = stmt.executeQuery(query);   
+            rs = stmt.executeQuery(query);
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
             
             while(rs.next()){
                 if(sId == rs.getInt("id"))
@@ -298,10 +334,10 @@ public class Student extends javax.swing.JFrame {
                     sName.setText(rs.getString("sName"));
                     address.setText(rs.getString("address"));
                     grade.setSelectedItem(rs.getString("grade"));
-                    birthday.setText(String.format("%s", rs.getInt("age")));
-                    birthday.setText(String.format("%td", rs.getDate("birthday")));
+                    age.setText(String.format("%s", rs.getInt("age")));
+                    birthday.setText(dateFormat.format(rs.getDate("birthday")));
                     gender.setSelectedItem(rs.getString("gender"));
-                    admissionDate.setText(String.format("%td", rs.getDate("admissionDate")));
+                    admissionDate.setText(dateFormat.format(rs.getDate("admissionDate")));
                     gurdianName.setText(rs.getString("gurdianName"));
                     contactNo.setText(String.format(0 + "%s", rs.getInt("contactNo")));
                 }
@@ -313,7 +349,69 @@ public class Student extends javax.swing.JFrame {
         
     }//GEN-LAST:event_searchActionPerformed
 
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+    private void Reset(){
+        id.setText("");
+        sName.setText("");
+        address.setText("");
+        grade.setSelectedItem("");
+        age.setText("");
+        birthday.setText("");
+        gender.setSelectedItem("");
+        admissionDate.setText("");
+        gurdianName.setText("");
+        contactNo.setText("");
+        
+    }
+    
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+        try{
+            stmt = con.createStatement();
+            
+            int sId = Integer.parseInt(id.getText());
+            String sname = this.sName.getText();
+            String sAddress = address.getText();
+            String sGrade = (String) grade.getSelectedItem();
+            int sAge = Integer.parseInt(age.getText());
+            long Birthday = Date.parse(birthday.getText());
+            java.sql.Date sBirthday = new java.sql.Date(Birthday);
+            String sGender = (String) gender.getSelectedItem();
+            long Admission = Date.parse(admissionDate.getText());
+            java.sql.Date sAdmission = new java.sql.Date(Admission);
+            String sGurdian = gurdianName.getText();
+            int sContact = Integer.parseInt(contactNo.getText());
+            
+            String query = "UPDATE student SET sName = ?, address =?, grade=?,age=?,birthday=?,gender=?,admissionDate=?,gurdianName =?,contactNo=? WHERE id=?";
+        
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+        
+            
+            preparedStmt.setString(1, sname);
+            preparedStmt.setString(2, sAddress);
+            preparedStmt.setString(3, sGrade);
+            preparedStmt.setInt(4, sAge);
+            preparedStmt.setDate(5, sBirthday);
+            preparedStmt.setString(6,sGender);
+            preparedStmt.setDate(7, sAdmission);
+            preparedStmt.setString(8, sGurdian);
+            preparedStmt.setInt(9, sContact);
+            preparedStmt.setInt(10, sId);
+           
+            preparedStmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Updated Successfully");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void newStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newStudentActionPerformed
+        // TODO add your handling code here:
+         Reset();       
+    }//GEN-LAST:event_newStudentActionPerformed
+
+    private void submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit1ActionPerformed
         // TODO add your handling code here:
         try{
             stmt = con.createStatement();
@@ -352,8 +450,28 @@ public class Student extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
         }
+    }//GEN-LAST:event_submit1ActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
         
-    }//GEN-LAST:event_submitActionPerformed
+        try{
+            stmt = con.createStatement();
+            
+            int sId = Integer.parseInt(id.getText());                                                                                       
+             String query = "DELETE FROM student WHERE id = '"+sId+"'";
+             
+             stmt.executeUpdate(query);
+             
+             Reset();
+             
+             JOptionPane.showMessageDialog(null, "Deleted");
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +514,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JTextField age;
     private javax.swing.JTextField birthday;
     private javax.swing.JTextField contactNo;
+    private javax.swing.JButton delete;
     private javax.swing.JComboBox<String> gender;
     private javax.swing.JComboBox<String> grade;
     private javax.swing.JTextField gurdianName;
@@ -412,8 +531,10 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton newStudent;
     private javax.swing.JTextField sName;
     private javax.swing.JButton search;
-    private javax.swing.JButton submit;
+    private javax.swing.JButton submit1;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
