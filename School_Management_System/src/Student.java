@@ -62,6 +62,7 @@ public class Student extends javax.swing.JFrame {
         newStudent = new javax.swing.JButton();
         submit1 = new javax.swing.JButton();
         delete = new javax.swing.JButton();
+        mainmenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +157,13 @@ public class Student extends javax.swing.JFrame {
             }
         });
 
+        mainmenu.setText("Main Menu");
+        mainmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainmenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -218,8 +226,10 @@ public class Student extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(update)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(delete)))
-                .addContainerGap(368, Short.MAX_VALUE))
+                        .addComponent(delete)
+                        .addGap(58, 58, 58)
+                        .addComponent(mainmenu)))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +295,8 @@ public class Student extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(newStudent)
                         .addComponent(submit1)
-                        .addComponent(delete)))
+                        .addComponent(delete)
+                        .addComponent(mainmenu)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -293,10 +304,10 @@ public class Student extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,6 +485,13 @@ public class Student extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteActionPerformed
 
+    private void mainmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        Home view = new Home();
+        view.setVisible(true);
+    }//GEN-LAST:event_mainmenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -532,6 +550,7 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton mainmenu;
     private javax.swing.JButton newStudent;
     private javax.swing.JTextField sName;
     private javax.swing.JButton search;

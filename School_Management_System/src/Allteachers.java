@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
 
@@ -10,35 +11,31 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Rashmika
  */
-public class AllStudent extends javax.swing.JFrame {
-
+public class Allteachers extends javax.swing.JFrame {
+    
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;
     
+
     /**
-     * Creates new form AllStudent
+     * Creates new form AllTeachers
      */
-    public AllStudent() {
+    public Allteachers() {
         initComponents();
         
         con = databaseConnection.connection();
-        showRecord();
+        showTeachers();
     }
     
-    /**
-     *
-     */
-    public  void showRecord(){
+        public  void showTeachers(){
         try{
             stmt =con.createStatement();
             
-            if(grade.getSelectedItem().equals("All"))
-            {
-                String query = "SELECT * FROM student";
-                ResultSet re = stmt.executeQuery(query);
-                view.setModel(DbUtils.resultSetToTableModel(re));
-            }
+                String query = "SELECT * FROM teacher";
+                ResultSet rs = stmt.executeQuery(query);
+                table.setModel(DbUtils.resultSetToTableModel(rs));
+            
         }
         catch(Exception e){
             System.out.println(e);
@@ -56,9 +53,8 @@ public class AllStudent extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        grade = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        view = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         mainmenu = new javax.swing.JButton();
         editadd = new javax.swing.JButton();
 
@@ -66,18 +62,10 @@ public class AllStudent extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel1.setFont(new java.awt.Font("Candara", 0, 24)); // NOI18N
-        jLabel1.setText("STUDENT");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        jLabel1.setText("TEACHER");
 
-        grade.setBackground(new java.awt.Color(204, 204, 255));
-        grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "1 A", "1 B", "1 C" }));
-        grade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradeActionPerformed(evt);
-            }
-        });
-
-        view.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,7 +76,7 @@ public class AllStudent extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(view);
+        jScrollPane1.setViewportView(table);
 
         mainmenu.setText("Main Menu");
         mainmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -108,50 +96,42 @@ public class AllStudent extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(mainmenu)
+                .addGap(65, 65, 65))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mainmenu)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(308, 308, 308)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(287, 287, 287)
                         .addComponent(editadd)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(editadd)
-                .addGap(25, 25, 25)
+                .addGap(23, 23, 23)
                 .addComponent(mainmenu)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,41 +140,6 @@ public class AllStudent extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void gradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeActionPerformed
-        // TODO add your handling code here:
-        try{
-            stmt = con.createStatement();
-            
-            if(grade.getSelectedItem().equals("All"))
-            {
-                String query = "SELECT * FROM student";
-                ResultSet re = stmt.executeQuery(query);
-                view.setModel(DbUtils.resultSetToTableModel(re));
-            }
-            if(grade.getSelectedItem().equals("1 A"))
-            {
-                String query = "SELECT * FROM student WHERE grade= '1 A' ";
-                ResultSet re = stmt.executeQuery(query);
-                view.setModel(DbUtils.resultSetToTableModel(re));
-            }
-            if(grade.getSelectedItem().equals("1 B"))
-            {
-                String query = "SELECT * FROM student WHERE grade= '1 B' ";
-                ResultSet re = stmt.executeQuery(query);
-                view.setModel(DbUtils.resultSetToTableModel(re));
-            }
-            if(grade.getSelectedItem().equals("1 C"))
-            {
-                String query = "SELECT * FROM student WHERE grade= '1 C' ";
-                ResultSet re = stmt.executeQuery(query);
-                view.setModel(DbUtils.resultSetToTableModel(re));
-            }
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_gradeActionPerformed
 
     private void mainmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainmenuActionPerformed
         // TODO add your handling code here:
@@ -206,7 +151,7 @@ public class AllStudent extends javax.swing.JFrame {
     private void editaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaddActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        Student view = new Student();
+        teacher view = new teacher();
         view.setVisible(true);
     }//GEN-LAST:event_editaddActionPerformed
 
@@ -227,31 +172,30 @@ public class AllStudent extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Allteachers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Allteachers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Allteachers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllStudent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Allteachers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AllStudent().setVisible(true);
+                new Allteachers().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editadd;
-    private javax.swing.JComboBox<String> grade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mainmenu;
-    private javax.swing.JTable view;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
